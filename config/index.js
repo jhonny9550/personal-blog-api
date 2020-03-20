@@ -1,4 +1,13 @@
-const logger = require('./components/logger');
-const server = require('./components/server');
+const processType = process.env.PROCESS_TYPE;
 
-module.exports = Object.assign({}, logger, server);
+let config;
+try {
+  config = require(`./${processType}`);
+} catch (ex) {
+  if (ex.code === 'MODULE_NOT_FOUND') {
+    throw new Error(`No config for process type: ${processType}`);
+  }
+  throw ex;
+}
+
+module.exports = config;

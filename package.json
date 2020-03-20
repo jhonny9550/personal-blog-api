@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:prod": "node app.js",
-    "start": "nodemon app.js"
+    "start:prod": "node index.js",
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
