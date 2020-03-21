@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
+
+const express = require('express');
+const router = express.Router();
 
 /* Avoiding favicon.ico request */
 router.get('/favicon.ico', (req, res) => res.status(204));

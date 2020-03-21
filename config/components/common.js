@@ -4,8 +4,10 @@ const joi = require('joi');
 
 const serverVarsSchema = joi
   .object({
-    APP_URL: joi.string(),
-    PORT: joi.number().required()
+    NODE_ENV: joi
+      .string()
+      .allow(['development', 'production', 'test', 'staging'])
+      .required()
   })
   .unknown();
 
@@ -18,10 +20,9 @@ if (error) {
 }
 
 const config = {
-  server: {
-    port: serverVars.PORT,
-    appUrl: serverVars.APP_URL || `http://localhost:${serverVars.PORT}/`
-  }
+  env: serverVars.NODE_ENV,
+  isTest: serverVars.NODE_ENV === 'test',
+  isDevelopment: serverVars.NODE_ENV === 'development'
 };
 
 module.exports = config;

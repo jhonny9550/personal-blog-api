@@ -1,3 +1,5 @@
+'use strict';
+
 const processType = process.env.PROCESS_TYPE;
 
 let config;
