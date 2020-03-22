@@ -8,7 +8,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      tweet_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      sanitized: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       text: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      url: {
         type: Sequelize.STRING,
         allowNull: false
       },

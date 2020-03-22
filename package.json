@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:prod": "node index.js",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
+    "apollo-server-express": "^2.11.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "graphql": "^14.6.0",
     "http-errors": "~1.6.3",
     "http-shutdown": "^1.2.2",
     "joi": "^14.3.1",

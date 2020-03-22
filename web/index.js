@@ -7,10 +7,15 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const http = require('http');
 const withGracefulShutdown = require('http-shutdown');
+const { ApolloServer } = require('apollo-server-express');
+const resolvers = require('./graphql/resolvers');
+const typeDefs = require('./graphql/schemas');
 const once = require('lodash/once');
 const indexRouter = require('./routes/index');
 
 const app = express();
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+apolloServer.applyMiddleware({ app });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,7 +54,9 @@ const startServer = once(() => {
   //   )
   //   server.headersTimeout = Number(HEADERS_TIMEOUT_SECONDS) * 1000
   // }
-  server.listen(config.server.port, '0.0.0.0', () => console.log(message));
+  server.listen(config.server.port, '0.0.0.0', () =>
+    console.log(apolloServer.graphqlPath)
+  );
   process.on('SIGTERM', stopServer);
 });
 
