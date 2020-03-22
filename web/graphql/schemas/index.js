@@ -8,6 +8,12 @@ const { gql } = require('apollo-server-express');
 const common = gql`
   scalar Date
 
+  type Status {
+    message: String
+    code: String!
+    ok: Boolean!
+  }
+
   type Query {
     root: String
   }
