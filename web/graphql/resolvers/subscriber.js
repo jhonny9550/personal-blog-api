@@ -1,7 +1,7 @@
 module.exports = {
   Query: {
-    getSubscriber: (parent, { id }, { models }) =>
-      models.subscriber.findOne({ where: { id } }),
+    getSubscriber: (parent, { email }, { models }) =>
+      models.subscriber.findOne({ where: { email } }),
     allSubscribers: (parent, args, { models }) => models.subscriber.findAll()
   },
   Mutation: {

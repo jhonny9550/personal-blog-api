@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Tag = sequelize.define('tag', {
-    name: DataTypes.STRING
+    name: { type: DataTypes.STRING, allowsNull: false }
   }, { underscored: true });
   Tag.associate = (models) => {
     Tag.belongsToMany(models.project, {
