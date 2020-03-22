@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Project = sequelize.define('project', {
     name: DataTypes.STRING,
@@ -7,12 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     subtitle: DataTypes.STRING,
     image: DataTypes.STRING,
     views: DataTypes.INTEGER,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    visible: DataTypes.BOOLEAN
   }, {});
   Project.associate = (models) => {
-    // associations can be defined here
     Project.belongsToMany(models.Tag, {
       through: 'tag_item',
+      as: 'tags',
       foreignKey: 'projectId'
     });
   };

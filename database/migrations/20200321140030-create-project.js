@@ -32,6 +32,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
+      visible: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
       content: {
         type: Sequelize.STRING,
         allowNull: false

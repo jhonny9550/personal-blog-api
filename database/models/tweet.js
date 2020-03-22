@@ -2,10 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Tweet = sequelize.define('tweet', {
     text: DataTypes.STRING,
-    user: DataTypes.JSONB
+    user: DataTypes.JSONB,
+    sanitized: DataTypes.BOOLEAN,
+    visible: DataTypes.BOOLEAN
   }, {});
-  Tweet.associate = function(models) {
-    // associations can be defined here
-  };
   return Tweet;
 };

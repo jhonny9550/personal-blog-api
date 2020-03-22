@@ -1,24 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tweets', {
+    return queryInterface.createTable('tagItems', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      text: {
-        type: Sequelize.STRING,
-        allowNull: false
+      projectId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'projects',
+          key: 'id'
+        }
       },
-      user: {
-        type: Sequelize.JSONB,
-        allowNull: false
-      },
-      visible: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
+      tagId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'tags',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('tweets');
+    return queryInterface.dropTable('tagItems');
   }
 };

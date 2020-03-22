@@ -6,10 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     time_reading: DataTypes.INTEGER,
     thumbnail: DataTypes.STRING,
-    views: DataTypes.INTEGER
+    views: DataTypes.INTEGER,
+    draft: DataTypes.BOOLEAN,
+    visible: DataTypes.BOOLEAN
   }, {});
-  Post.associate = function(models) {
-    // associations can be defined here
-  };
   return Post;
 };

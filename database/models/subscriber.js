@@ -4,8 +4,5 @@ module.exports = (sequelize, DataTypes) => {
     active: DataTypes.BOOLEAN,
     unsubscribe_at: DataTypes.DATE
   }, {});
-  Subscriber.associate = function(models) {
-    // associations can be defined here
-  };
   return Subscriber;
 };

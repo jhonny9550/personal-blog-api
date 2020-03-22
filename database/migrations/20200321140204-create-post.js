@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      draft: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -31,6 +35,10 @@ module.exports = {
       views: {
         type: Sequelize.INTEGER,
         defaultValue: 0
+      },
+      visible: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,

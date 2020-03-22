@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Tag.associate = (models) => {
-    // associations can be defined here
     Tag.belongsToMany(models.Project, {
       through: 'tag_item',
+      as: 'projects',
       foreignKey: 'tagId'
     });
   };
