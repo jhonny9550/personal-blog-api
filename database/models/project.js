@@ -10,12 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     views: DataTypes.INTEGER,
     content: DataTypes.STRING,
     visible: DataTypes.BOOLEAN
-  }, {});
+  }, { underscore: true });
   Project.associate = (models) => {
     Project.belongsToMany(models.Tag, {
       through: 'tag_item',
       as: 'tags',
-      foreignKey: 'projectId'
+      foreignKey: {
+        name: 'projectId',
+        field: 'project_id'
+      }
     });
   };
   return Project;

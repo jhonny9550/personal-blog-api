@@ -5,6 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     user: DataTypes.JSONB,
     sanitized: DataTypes.BOOLEAN,
     visible: DataTypes.BOOLEAN
-  }, {});
+  }, { underscore: true });
   return Tweet;
 };

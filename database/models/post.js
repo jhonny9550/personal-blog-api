@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    time_reading: DataTypes.INTEGER,
+    timeReading: DataTypes.INTEGER,
     thumbnail: DataTypes.STRING,
     views: DataTypes.INTEGER,
     draft: DataTypes.BOOLEAN,
     visible: DataTypes.BOOLEAN
-  }, {});
+  }, { underscore: true });
   return Post;
 };

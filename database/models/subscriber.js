@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Subscriber = sequelize.define('subscriber', {
     active: DataTypes.BOOLEAN,
-    unsubscribe_at: DataTypes.DATE
-  }, {});
+    unsubscribeAt: DataTypes.DATE
+  }, { underscore: true });
   return Subscriber;
 };
