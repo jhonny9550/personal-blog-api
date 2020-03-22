@@ -2,15 +2,15 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscribers', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       active: {
         type: Sequelize.BOOLEAN,
         allowNull: false
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        primaryKey: true,
+        unique: true
       },
       unsubscribe_at: {
         type: Sequelize.DATE
