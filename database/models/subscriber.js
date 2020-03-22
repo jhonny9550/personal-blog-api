@@ -4,6 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     active: DataTypes.BOOLEAN,
     unsubscribeAt: DataTypes.DATE
-  }, { underscore: true });
+  }, { underscored: true });
   return Subscriber;
 };

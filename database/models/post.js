@@ -9,6 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     views: DataTypes.INTEGER,
     draft: DataTypes.BOOLEAN,
     visible: DataTypes.BOOLEAN
-  }, { underscore: true });
+  }, { underscored: true });
   return Post;
 };

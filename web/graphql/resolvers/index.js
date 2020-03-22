@@ -1,7 +1,9 @@
-const common = {
+const subscriberResolver = require('./subscriber');
+
+const root = {
   Query: {
-    hi: (parent, args, context, info) => 'Hi GraphQL!'
+    root: (parent, args, context, info) => 'Hi GraphQL!'
   }
 };
 
-module.exports = [common];
+module.exports = [root, subscriberResolver];

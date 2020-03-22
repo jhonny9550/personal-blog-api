@@ -8,6 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     sanitized: DataTypes.BOOLEAN,
     visible: DataTypes.BOOLEAN,
     url: DataTypes.STRING
-  }, { underscore: true });
+  }, { underscored: true });
   return Tweet;
 };

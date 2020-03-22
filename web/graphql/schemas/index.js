@@ -9,8 +9,13 @@ const common = gql`
   scalar Date
 
   type Query {
-    hi: String
+    root: String
   }
+
+  type Mutation {
+    root: String
+  }
+
 `;
 
 module.exports = [
