@@ -8,10 +8,26 @@ module.exports = (sequelize, DataTypes) => {
         allowsNull: false,
         defaultValue: DataTypes.NOW
       },
-      title: { type: DataTypes.STRING, allowsNull: false },
-      description: { type: DataTypes.STRING, allowsNull: false },
-      timeReading: { type: DataTypes.INTEGER, allowsNull: false },
-      thumbnail: { type: DataTypes.STRING, allowsNull: false },
+      title: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true }
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true }
+      },
+      timeReading: {
+        type: DataTypes.INTEGER,
+        allowsNull: false,
+        validate: { min: 0 }
+      },
+      thumbnail: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true, isUrl: true }
+      },
       views: { type: DataTypes.INTEGER, allowsNull: false, defaultValue: 0 },
       draft: { type: DataTypes.BOOLEAN, allowsNull: false, defaultValue: true },
       visible: {

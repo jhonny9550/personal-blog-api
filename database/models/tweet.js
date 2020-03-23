@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       date: { type: DataTypes.DATE, allowsNull: false },
       tweetId: { type: DataTypes.INTEGER, allowsNull: false },
-      text: { type: DataTypes.STRING, allowsNull: false },
+      text: { type: DataTypes.STRING, allowsNull: false, validate: { notEmpty: true } },
       user: { type: DataTypes.JSONB, allowsNull: false },
       sanitized: {
         type: DataTypes.BOOLEAN,

@@ -6,14 +6,36 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING,
-        allowsNull: false
+        allowsNull: false,
+        validate: { notEmpty: true }
       },
-      description: { type: DataTypes.STRING, allowsNull: false },
+      description: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true }
+      },
       date: { type: DataTypes.DATE, allowsNull: false },
-      subtitle: { type: DataTypes.STRING, allowsNull: false },
-      image: { type: DataTypes.STRING, allowsNull: false },
-      views: { type: DataTypes.INTEGER, allowsNull: false, defaultValue: 0 },
-      content: { type: DataTypes.STRING, allowsNull: false },
+      subtitle: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true }
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true, isUrl: true }
+      },
+      views: {
+        type: DataTypes.INTEGER,
+        allowsNull: false,
+        defaultValue: 0,
+        validate: { min: 0 }
+      },
+      content: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true }
+      },
       visible: {
         type: DataTypes.BOOLEAN,
         allowsNull: false,
