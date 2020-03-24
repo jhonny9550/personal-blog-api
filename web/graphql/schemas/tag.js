@@ -8,4 +8,14 @@ module.exports = gql`
     createdAt: Date
     updatedAt: Date
   }
+  extend type Query {
+    getTag(id: String!): Tag
+    getTagByName(name: String!): Tag
+    allTags: [Tag!]
+  }
+  extend type Mutation {
+    createTag(name: String!): Tag!
+    updateTag(name: String!): Tag
+    deleteTag(id: Int!): Status
+  }
 `;

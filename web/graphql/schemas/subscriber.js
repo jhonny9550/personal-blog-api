@@ -12,7 +12,6 @@ module.exports = gql`
   extend type Query {
     getSubscriber(email: String!): Subscriber
     allSubscribers(active: Boolean): [Subscriber!]
-    activeSubscribers: [Subscriber!]
   }
 
   extend type Mutation {

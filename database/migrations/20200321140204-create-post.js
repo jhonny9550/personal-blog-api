@@ -17,20 +17,17 @@ module.exports = {
         defaultValue: true
       },
       title: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       time_reading: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
       thumbnail: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       views: {
         type: Sequelize.INTEGER,

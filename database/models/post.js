@@ -9,14 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.NOW
       },
       title: {
-        type: DataTypes.STRING,
-        allowsNull: false,
-        validate: { notEmpty: true }
+        type: DataTypes.STRING
       },
       description: {
-        type: DataTypes.STRING,
-        allowsNull: false,
-        validate: { notEmpty: true }
+        type: DataTypes.STRING
       },
       timeReading: {
         type: DataTypes.INTEGER,
@@ -25,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       thumbnail: {
         type: DataTypes.STRING,
-        allowsNull: false,
-        validate: { notEmpty: true, isUrl: true }
+        validate: { isUrl: true }
       },
       views: { type: DataTypes.INTEGER, allowsNull: false, defaultValue: 0 },
       draft: { type: DataTypes.BOOLEAN, allowsNull: false, defaultValue: true },

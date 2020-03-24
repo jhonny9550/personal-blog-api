@@ -7,10 +7,22 @@ module.exports = gql`
     date: Date!
     title: String!
     description: String!
-    timeReading: Int!
+    timeReading: Int
     thumbnail: String!
     views: Int
     visible: Boolean
     createdAt: Date
+    updatedAt: Date
+  }
+
+  extend type Query {
+    getPost(id: Int!): Post
+    allPosts(draft: Boolean, visible: Boolean, date: Date): Post
+  }
+
+  extend type Mutation {
+    createPost(draft: Boolean, date: Date!, title: String, description: String, thumbnail: String, visible: Boolean): Post!
+    updatePost(id: Int!, draft: Boolean, date: Date, title: String, description: String, thumbnail: String, visible: Boolean): Post
+    incrementViews(id: Int!): Status
   }
 `;

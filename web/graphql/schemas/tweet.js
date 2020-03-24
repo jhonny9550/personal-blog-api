@@ -24,4 +24,8 @@ module.exports = gql`
     createdAt: Date
     updatedAt: Date
   }
+
+  extend type Query {
+    allTweets(limit: Int): [Tweet!]
+  }
 `;
