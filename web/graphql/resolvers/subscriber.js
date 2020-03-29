@@ -1,19 +1,17 @@
 module.exports = {
   Query: {
-    getSubscriber: (parent, { email }, { models }) =>
-      models.subscriber.findOne({ where: { email } }),
+    getSubscriber: (_, { email }, { models }) => models.Subscriber.findOne({ where: { email } }),
     allSubscribers: (parent, { active }, { models }) => {
       if (active === undefined || active === null) {
-        return models.subscriber.findAll();
+        return models.Subscriber.findAll();
       }
-      return models.subscriber.findAll({ where: { active } });
-    }
+      return models.Subscriber.findAll({ where: { active } });
+    },
   },
   Mutation: {
-    createSubscriber: (parent, args, { models }) =>
-      models.subscriber.create(args),
+    createSubscriber: (parent, args, { models }) => models.Subscriber.create(args),
     toggleSubscription: async (parent, { email }, { models }) => {
-      const subscriber = await models.subscriber.findOne({ where: { email } });
+      const subscriber = await models.Subscriber.findOne({ where: { email } });
       if (subscriber) {
         subscriber.active = !subscriber.active;
         if (!subscriber.active) {
@@ -24,20 +22,20 @@ module.exports = {
       return subscriber;
     },
     deleteSubscriber: async (parent, { email }, { models }) => {
-      const subscriber = await models.subscriber.findOne({ where: { email } });
+      const subscriber = await models.Subscriber.findOne({ where: { email } });
       if (!subscriber) {
         return {
           code: 'instance/delete',
           message: 'subscriber not found',
-          ok: false
+          ok: false,
         };
       }
       await subscriber.destroy();
       return {
         code: 'instance/delete',
         message: 'subscriber removed succesfully',
-        ok: true
+        ok: true,
       };
-    }
-  }
+    },
+  },
 };

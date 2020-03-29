@@ -2,9 +2,9 @@ module.exports = {
   Query: {
     allTweets: (parent, { limit }, { models }) => {
       if (limit) {
-        return models.tweet.findAll({ limit });
+        return models.Tweet.findAll({ limit });
       }
-      return models.tweet.findAll();
-    }
-  }
+      return models.Tweet.findAll();
+    },
+  },
 };

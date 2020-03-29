@@ -1,37 +1,36 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define(
-    'post',
+    'Post',
     {
       date: {
         type: DataTypes.DATE,
         allowsNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: DataTypes.NOW,
       },
       title: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       description: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       timeReading: {
         type: DataTypes.INTEGER,
         allowsNull: false,
-        validate: { min: 0 }
+        validate: { min: 0 },
       },
       thumbnail: {
         type: DataTypes.STRING,
-        validate: { isUrl: true }
+        validate: { isUrl: true },
       },
       views: { type: DataTypes.INTEGER, allowsNull: false, defaultValue: 0 },
       draft: { type: DataTypes.BOOLEAN, allowsNull: false, defaultValue: true },
       visible: {
         type: DataTypes.BOOLEAN,
         allowsNull: false,
-        defaultValue: true
-      }
+        defaultValue: true,
+      },
     },
-    { underscored: true }
+    { underscored: true },
   );
   return Post;
 };

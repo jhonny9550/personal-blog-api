@@ -1,9 +1,10 @@
 const subscriberResolver = require('./subscriber');
+const tagResolver = require('./tag');
 
 const root = {
   Query: {
-    root: (parent, args, context, info) => 'Hi GraphQL!'
-  }
+    root: () => 'Hi GraphQL!',
+  },
 };
 
-module.exports = [root, subscriberResolver];
+module.exports = [root, subscriberResolver, tagResolver];

@@ -1,7 +1,6 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Tweet = sequelize.define(
-    'tweet',
+    'Tweet',
     {
       date: { type: DataTypes.DATE, allowsNull: false },
       tweetId: { type: DataTypes.INTEGER, allowsNull: false },
@@ -10,16 +9,16 @@ module.exports = (sequelize, DataTypes) => {
       sanitized: {
         type: DataTypes.BOOLEAN,
         allowsNull: false,
-        defaultValue: false
+        defaultValue: false,
       },
       visible: {
         type: DataTypes.BOOLEAN,
         allowsNull: false,
-        defaultValue: true
+        defaultValue: true,
       },
-      url: { type: DataTypes.STRING, allowsNull: false }
+      url: { type: DataTypes.STRING, allowsNull: false },
     },
-    { underscored: true }
+    { underscored: true },
   );
   return Tweet;
 };

@@ -1,5 +1,3 @@
-'use strict';
-
 const joi = require('joi');
 
 const serverVarsSchema = joi
@@ -7,13 +5,13 @@ const serverVarsSchema = joi
     NODE_ENV: joi
       .string()
       .allow(['development', 'production', 'test', 'staging'])
-      .required()
+      .required(),
   })
   .unknown();
 
 const { error, value: serverVars } = joi.validate(
   process.env,
-  serverVarsSchema
+  serverVarsSchema,
 );
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
@@ -22,7 +20,7 @@ if (error) {
 const config = {
   env: serverVars.NODE_ENV,
   isTest: serverVars.NODE_ENV === 'test',
-  isDevelopment: serverVars.NODE_ENV === 'development'
+  isDevelopment: serverVars.NODE_ENV === 'development',
 };
 
 module.exports = config;

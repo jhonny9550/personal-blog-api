@@ -23,6 +23,6 @@ module.exports = gql`
   extend type Mutation {
     createPost(draft: Boolean, date: Date!, title: String, description: String, thumbnail: String, visible: Boolean): Post!
     updatePost(id: Int!, draft: Boolean, date: Date, title: String, description: String, thumbnail: String, visible: Boolean): Post
-    incrementViews(id: Int!): Status
+    incrementPostViews(id: Int!): Status
   }
 `;

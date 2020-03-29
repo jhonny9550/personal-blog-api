@@ -1,4 +1,3 @@
-'use strict';
 const joi = require('joi');
 
 const loggerVarsSchema = joi
@@ -13,14 +12,14 @@ const loggerVarsSchema = joi
       .truthy('true')
       .falsy('FALSE')
       .falsy('false')
-      .default(true)
+      .default(true),
   })
   .unknown()
   .required();
 
 const { error, value: loggerVars } = joi.validate(
   process.env,
-  loggerVarsSchema
+  loggerVarsSchema,
 );
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
@@ -29,8 +28,8 @@ if (error) {
 const config = {
   logger: {
     level: loggerVars.LOGGER_LEVEL,
-    enabled: loggerVars.LOGGER_ENABLED
-  }
+    enabled: loggerVars.LOGGER_ENABLED,
+  },
 };
 
 module.exports = config;

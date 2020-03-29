@@ -1,8 +1,6 @@
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
   const Subscriber = sequelize.define(
-    'subscriber',
+    'Subscriber',
     {
       email: {
         type: DataTypes.STRING,
@@ -10,20 +8,20 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         validate: {
           isEmail: true,
-          notEmpty: true
-        }
+          notEmpty: true,
+        },
       },
       active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
-        allowNull: false
+        allowNull: false,
       },
       unsubscribeAt: {
         type: DataTypes.DATE,
-        allowNull: true
-      }
+        allowNull: true,
+      },
     },
-    { underscored: true }
+    { underscored: true },
   );
   return Subscriber;
 };

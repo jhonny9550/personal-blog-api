@@ -1,6 +1,3 @@
-'use strict';
-
-const config = require('../config');
 const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -8,9 +5,10 @@ const logger = require('morgan');
 const http = require('http');
 const withGracefulShutdown = require('http-shutdown');
 const { ApolloServer } = require('apollo-server-express');
+const once = require('lodash/once');
 const resolvers = require('./graphql/resolvers');
 const typeDefs = require('./graphql/schemas');
-const once = require('lodash/once');
+const config = require('../config');
 const indexRouter = require('./routes/index');
 const models = require('../database/models');
 
@@ -18,11 +16,9 @@ const app = express();
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  context: { models }
+  context: { models },
 });
 apolloServer.applyMiddleware({ app });
-models.sequelize.authenticate();
-models.sequelize.sync();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,7 +28,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
@@ -65,4 +61,7 @@ const startServer = once(() => {
   process.on('SIGTERM', stopServer);
 });
 
-startServer();
+models.sequelize.authenticate();
+models.sequelize.sync({ force: true }).then(() => {
+  startServer();
+});
