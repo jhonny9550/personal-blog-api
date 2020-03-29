@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     { underscored: true },
   );
   Project.associate = (models) => {
-    Project.belongsToMany(models.Tag, { through: models.TagItem });
+    Project.belongsToMany(models.Tag, { through: models.TagItem, as: 'tags' });
   };
   return Project;
 };

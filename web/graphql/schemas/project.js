@@ -18,7 +18,7 @@ module.exports = gql`
 
   extend type Query {
     getProject(id: Int!): Project
-    allProjects(tag: String): [Project!]
+    allProjects(tag: Int): [Project!]
   }
 
   extend type Mutation {
