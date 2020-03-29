@@ -62,6 +62,6 @@ const startServer = once(() => {
 });
 
 models.sequelize.authenticate();
-models.sequelize.sync({ force: true }).then(() => {
+models.sequelize.sync().then(() => {
   startServer();
 });

@@ -9,8 +9,24 @@ module.exports = {
     },
   },
   Mutation: {
-    createProject: (parent, args, { models }) => {
-      models.Project.create(args);
+    createProject: async (parent, { tags, ...args }, { models }) => {
+      const project = await models.Project.create(args);
+      await project.addTags(tags);
+      project.tags = project.tags || await project.getTags();
+      return project;
+    },
+    updateProject: async (parent, { tags, id, ...args }, { models }) => {
+      let project = await models.Project.findOne({ where: { id } });
+      project = { ...project, ...args };
+      await project.setTags(tags);
+      await project.save();
+      return project;
+    },
+    incrementProjectViews: async (parent, { id }, { models }) => {
+      const project = await models.Project.findOne({ where: { id } });
+      project.views += 1;
+      await project.save();
+      return project;
     },
   },
 };

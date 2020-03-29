@@ -22,8 +22,8 @@ module.exports = gql`
   }
 
   extend type Mutation {
-    createProject(name: String!, description: String!, date: String!, subtitle: String!, image: String!, content: String!, visible: Boolean, tags: [Int!], visible: Boolean): Project!
-    updateProject(id: Int!, name: String, description: String, date: String, subtitle: String, image: String, content: String, visible: Boolean, tags: [Int!], visible: Boolean): Project
-    incrementProjectViews(id: Int!): Status
+    createProject(name: String!, description: String!, date: String!, subtitle: String!, image: String!, content: String!, tags: [Int!], visible: Boolean): Project!
+    updateProject(id: Int!, name: String, description: String, date: String, subtitle: String, image: String, content: String, tags: [Int!], visible: Boolean): Project
+    incrementProjectViews(id: Int!): Project
   }
 `;
