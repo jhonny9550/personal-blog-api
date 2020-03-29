@@ -1,3 +1,5 @@
+const { completedPostSchema } = require('../validators/post');
+
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define(
     'Post',
@@ -6,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowsNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      content: {
+        type: DataTypes.STRING,
       },
       title: {
         type: DataTypes.STRING,
@@ -32,5 +37,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     { underscored: true },
   );
+  Post.addHook('beforeSave', (post) => {
+    const { error, value } = completedPostSchema.validate(post);
+    if (error) {
+      console.log('Post validation error: ', error);
+      post.draft = true;
+    }
+  });
   return Post;
 };

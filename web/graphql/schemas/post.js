@@ -3,6 +3,7 @@ const { gql } = require('apollo-server-express');
 module.exports = gql`
   type Post {
     id: Int!
+    content: String!
     draft: Boolean
     date: Date!
     title: String!
@@ -21,8 +22,8 @@ module.exports = gql`
   }
 
   extend type Mutation {
-    createPost(draft: Boolean, date: Date!, title: String, description: String, thumbnail: String, visible: Boolean): Post!
-    updatePost(id: Int!, draft: Boolean, date: Date, title: String, description: String, thumbnail: String, visible: Boolean): Post
+    createPost(content: String, draft: Boolean, date: Date!, conttitle: String, description: String, thumbnail: String, visible: Boolean): Post!
+    updatePost(id: Int!, content: String, draft: Boolean, date: Date, title: String, description: String, thumbnail: String, visible: Boolean): Post
     incrementPostViews(id: Int!): Status
   }
 `;
