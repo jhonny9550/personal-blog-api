@@ -17,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         allowsNull: false,
         defaultValue: DataTypes.NOW,
       },
-      content: {
-        type: DataTypes.STRING,
-      },
       title: {
         type: DataTypes.STRING,
       },
@@ -47,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     { underscored: true },
   );
   Post.addHook('beforeSave', (post) => {
-    const { error, value } = completedPostSchema.validate(post);
+    const { error } = completedPostSchema.validate(post);
     if (error) {
       console.log('Post validation error: ', error);
       post.draft = true;

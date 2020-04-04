@@ -8,7 +8,7 @@ module.exports = {
     },
     content: {
       type: Sequelize.STRING,
-      defaultValue: false,
+      defaultValue: '',
     },
     date: {
       type: Sequelize.DATE,
@@ -17,9 +17,6 @@ module.exports = {
     draft: {
       type: Sequelize.BOOLEAN,
       defaultValue: true,
-    },
-    content: {
-      type: Sequelize.STRING,
     },
     title: {
       type: Sequelize.STRING,

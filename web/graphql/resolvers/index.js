@@ -3,12 +3,11 @@ const postResolver = require('./post');
 const projectResolver = require('./project');
 const tagResolver = require('./tag');
 const tweetResolver = require('./tweet');
-const postResolver = require('./post');
 
 const root = {
   Query: {
-    root: () => 'Hi GraphQL!'
-  }
+    root: () => 'Hi GraphQL!',
+  },
 };
 
 module.exports = [
@@ -17,5 +16,5 @@ module.exports = [
   projectResolver,
   subscriberResolver,
   tagResolver,
-  tweetResolver
+  tweetResolver,
 ];
