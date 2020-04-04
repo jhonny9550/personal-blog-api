@@ -6,6 +6,10 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
+    content: {
+      type: Sequelize.STRING,
+      defaultValue: false,
+    },
     date: {
       type: Sequelize.DATE,
       allowNull: false,
@@ -23,6 +27,7 @@ module.exports = {
     time_reading: {
       type: Sequelize.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
     thumbnail: {
       type: Sequelize.STRING,

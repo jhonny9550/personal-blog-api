@@ -13,6 +13,7 @@
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "graphql": "^14.6.0",
+    "html-to-text": "^5.1.1",
     "http-errors": "~1.6.3",
     "http-shutdown": "^1.2.2",
     "joi": "^14.3.1",
@@ -20,6 +21,7 @@
     "morgan": "~1.9.1",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
+    "reading-time": "^1.2.0",
     "sequelize": "^5.21.5"
   },
   "devDependencies": {

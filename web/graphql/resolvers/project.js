@@ -20,14 +20,16 @@ module.exports = {
     },
     updateProject: async (parent, { tags, id, ...args }, { models }) => {
       const project = await models.Project.findOne({ where: { id } });
-      if (tags) {
-        await project.setTags(tags);
-        project.tags = project.tags || await project.getTags();
+      if (project) {
+        if (tags) {
+          await project.setTags(tags);
+          project.tags = project.tags || await project.getTags();
+        }
+        Object.keys(args).forEach((key) => {
+          project[key] = args[key];
+        });
+        await project.save();
       }
-      Object.keys(args).forEach((key) => {
-        project[key] = args[key];
-      });
-      await project.save();
       return project;
     },
     incrementProjectViews: async (parent, { id }, { models }) => {

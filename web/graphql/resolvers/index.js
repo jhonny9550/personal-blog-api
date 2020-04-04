@@ -1,4 +1,5 @@
 const subscriberResolver = require('./subscriber');
+const postResolver = require('./post');
 const projectResolver = require('./project');
 const tagResolver = require('./tag');
 
@@ -8,4 +9,4 @@ const root = {
   },
 };
 
-module.exports = [root, projectResolver, subscriberResolver, tagResolver];
+module.exports = [root, postResolver, projectResolver, subscriberResolver, tagResolver];
