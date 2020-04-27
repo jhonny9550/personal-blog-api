@@ -1,7 +1,9 @@
-module.exports = {
+export default {
   Query: {
-    getTag: async (parent, { id }, { models }) => models.Tag.findOne({ where: { id } }),
-    getTagByName: (parent, { name }, { models }) => models.Tag.findOne({ where: { name } }),
+    getTag: async (parent, { id }, { models }) =>
+      models.Tag.findOne({ where: { id } }),
+    getTagByName: (parent, { name }, { models }) =>
+      models.Tag.findOne({ where: { name } }),
     allTags: (parent, args, { models }) => models.Tag.findAll(),
   },
   Mutation: {

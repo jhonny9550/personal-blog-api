@@ -1,11 +1,21 @@
-module.exports = (sequelize, DataTypes) => {
-  const Tag = sequelize.define('Tag', {
-    name: {
-      type: DataTypes.STRING, allowsNull: false, unique: true, validate: { notEmpty: true },
+export default (sequelize, DataTypes) => {
+  const Tag = sequelize.define(
+    'Tag',
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        unique: true,
+        validate: { notEmpty: true },
+      },
     },
-  }, { underscored: true });
+    { underscored: true }
+  );
   Tag.associate = (models) => {
-    Tag.belongsToMany(models.Project, { through: models.TagItem, as: 'projects' });
+    Tag.belongsToMany(models.Project, {
+      through: models.TagItem,
+      as: 'projects',
+    });
   };
   return Tag;
 };

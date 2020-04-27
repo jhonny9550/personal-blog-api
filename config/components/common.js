@@ -1,5 +1,4 @@
-const joi = require('joi');
-
+import joi from 'joi';
 const serverVarsSchema = joi
   .object({
     NODE_ENV: joi
@@ -11,7 +10,7 @@ const serverVarsSchema = joi
 
 const { error, value: serverVars } = joi.validate(
   process.env,
-  serverVarsSchema,
+  serverVarsSchema
 );
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
@@ -23,4 +22,4 @@ const config = {
   isDevelopment: serverVars.NODE_ENV === 'development',
 };
 
-module.exports = config;
+export default config;

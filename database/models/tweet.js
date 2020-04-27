@@ -1,10 +1,14 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Tweet = sequelize.define(
     'Tweet',
     {
       date: { type: DataTypes.DATE, allowsNull: false },
       tweetId: { type: DataTypes.INTEGER, allowsNull: false },
-      text: { type: DataTypes.STRING, allowsNull: false, validate: { notEmpty: true } },
+      text: {
+        type: DataTypes.STRING,
+        allowsNull: false,
+        validate: { notEmpty: true },
+      },
       user: { type: DataTypes.JSONB, allowsNull: false },
       sanitized: {
         type: DataTypes.BOOLEAN,
@@ -18,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       url: { type: DataTypes.STRING, allowsNull: false },
     },
-    { underscored: true },
+    { underscored: true }
   );
   return Tweet;
 };

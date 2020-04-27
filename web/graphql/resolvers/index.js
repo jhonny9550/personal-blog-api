@@ -1,8 +1,8 @@
-const subscriberResolver = require('./subscriber');
-const postResolver = require('./post');
-const projectResolver = require('./project');
-const tagResolver = require('./tag');
-const tweetResolver = require('./tweet');
+import subscriberResolver from './subscriber';
+import postResolver from './post';
+import projectResolver from './project';
+import tagResolver from './tag';
+import tweetResolver from './tweet';
 
 const root = {
   Query: {
@@ -10,7 +10,7 @@ const root = {
   },
 };
 
-module.exports = [
+export default [
   root,
   postResolver,
   projectResolver,

@@ -1,4 +1,5 @@
-const logger = require('./components/logger');
-const server = require('./components/server');
+import logger from './components/logger';
+import server from './components/server';
+import common from './components/common';
 
-module.exports = { ...logger, ...server };
+export default { ...common, ...logger, ...server };

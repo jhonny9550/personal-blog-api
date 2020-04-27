@@ -1,10 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+import fs from 'fs';
+import path from 'path';
+import Sequelize from 'sequelize';
 
 const basename = path.basename(__filename);
-const { env } = require('../../config/components/common');
-const config = require('../../config/components/database')[env];
+import common from '../../config/components/common';
+import globalConfg from '../../config/components/database';
+
+const config = globalConfg[common.env];
 
 const db = {};
 
@@ -16,14 +18,15 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
-    config,
+    config
   );
 }
 
 fs.readdirSync(__dirname)
-  .filter((file) => (
-    file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
-  ))
+  .filter(
+    (file) =>
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+  )
   .forEach((file) => {
     const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
@@ -38,4 +41,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

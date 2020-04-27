@@ -1,4 +1,4 @@
-const joi = require('joi');
+import joi from 'joi';
 
 const loggerVarsSchema = joi
   .object({
@@ -19,7 +19,7 @@ const loggerVarsSchema = joi
 
 const { error, value: loggerVars } = joi.validate(
   process.env,
-  loggerVarsSchema,
+  loggerVarsSchema
 );
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
@@ -32,4 +32,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;

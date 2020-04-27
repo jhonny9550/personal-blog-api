@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Subscriber = sequelize.define(
     'Subscriber',
     {
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     },
-    { underscored: true },
+    { underscored: true }
   );
   return Subscriber;
 };

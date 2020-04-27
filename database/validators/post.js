@@ -1,11 +1,11 @@
-const joi = require('joi');
+import joi from 'joi';
 
-const completedPostSchema = joi.object({
+export const completedPostSchema = joi.object({
   date: joi.date().required(),
   content: joi.string().required(),
   title: joi.string().required(),
   description: joi.string().required(),
-  thumbnail: joi.string().uri({ scheme: ['http', 'https'] })
+  thumbnail: joi.string().uri({ scheme: ['http', 'https'] }),
 });
 
-module.exports = { completedPostSchema };
+export default { completedPostSchema };

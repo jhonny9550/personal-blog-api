@@ -1,6 +1,7 @@
-'use strict';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable global-require */
+import dotenv from 'dotenv';
 
-const dotenv = require('dotenv');
 dotenv.config();
 
 const processType = process.env.PROCESS_TYPE;

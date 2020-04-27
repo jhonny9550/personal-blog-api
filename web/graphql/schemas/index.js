@@ -1,9 +1,9 @@
-const postSchema = require('./post');
-const projectSchema = require('./project');
-const subscriberSchema = require('./subscriber');
-const tagSchema = require('./tag');
-const tweetSchema = require('./tweet');
-const { gql } = require('apollo-server-express');
+import postSchema from './post';
+import projectSchema from './project';
+import subscriberSchema from './subscriber';
+import tagSchema from './tag';
+import tweetSchema from './tweet';
+import { gql } from 'apollo-server-express';
 
 const common = gql`
   scalar Date
@@ -24,7 +24,7 @@ const common = gql`
 
 `;
 
-module.exports = [
+export default [
   common,
   postSchema,
   projectSchema,

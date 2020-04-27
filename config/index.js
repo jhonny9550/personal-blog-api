@@ -4,7 +4,7 @@ const processType = process.env.PROCESS_TYPE;
 let config;
 try {
   // eslint-disable-next-line global-require
-  config = require(`./${processType}`);
+  config = require(`./${processType}`).default;
 } catch (ex) {
   if (ex.code === 'MODULE_NOT_FOUND') {
     throw new Error(`No config for process type: ${processType}`);
@@ -12,4 +12,4 @@ try {
   throw ex;
 }
 
-module.exports = config;
+export default config;

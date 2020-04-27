@@ -1,6 +1,7 @@
-module.exports = {
+export default {
   Query: {
-    getPost: (parent, { id }, { models }) => models.Post.findOne({ where: { id } }),
+    getPost: (parent, { id }, { models }) =>
+      models.Post.findOne({ where: { id } }),
     allPosts: (parent, { date, draft, visible }, { models }) => {
       const params = {};
       if (typeof date === 'string') {

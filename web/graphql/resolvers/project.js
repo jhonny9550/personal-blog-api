@@ -1,12 +1,15 @@
-module.exports = {
+export default {
   Query: {
-    getProject: (parent, { id }, { models }) => models.Project.findOne({ where: { id } }),
+    getProject: (parent, { id }, { models }) =>
+      models.Project.findOne({ where: { id } }),
     allProjects: (parent, { tag }, { models }) => {
       let where = {};
       if (tag) {
         where = { id: tag };
       }
-      return models.Project.findAll({ include: [{ model: models.Tag, as: 'tags', where }] });
+      return models.Project.findAll({
+        include: [{ model: models.Tag, as: 'tags', where }],
+      });
     },
   },
   Mutation: {
@@ -14,7 +17,7 @@ module.exports = {
       const project = await models.Project.create(args);
       if (tags) {
         await project.addTags(tags);
-        project.tags = project.tags || await project.getTags();
+        project.tags = project.tags || (await project.getTags());
       }
       return project;
     },
@@ -23,7 +26,7 @@ module.exports = {
       if (project) {
         if (tags) {
           await project.setTags(tags);
-          project.tags = project.tags || await project.getTags();
+          project.tags = project.tags || (await project.getTags());
         }
         Object.keys(args).forEach((key) => {
           project[key] = args[key];

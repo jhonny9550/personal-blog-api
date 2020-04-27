@@ -1,6 +1,7 @@
-module.exports = {
+export default {
   Query: {
-    getSubscriber: (_, { email }, { models }) => models.Subscriber.findOne({ where: { email } }),
+    getSubscriber: (_, { email }, { models }) =>
+      models.Subscriber.findOne({ where: { email } }),
     allSubscribers: (parent, { active }, { models }) => {
       if (active === undefined || active === null) {
         return models.Subscriber.findAll();
@@ -9,7 +10,8 @@ module.exports = {
     },
   },
   Mutation: {
-    createSubscriber: (parent, args, { models }) => models.Subscriber.create(args),
+    createSubscriber: (parent, args, { models }) =>
+      models.Subscriber.create(args),
     toggleSubscription: async (parent, { email }, { models }) => {
       const subscriber = await models.Subscriber.findOne({ where: { email } });
       if (subscriber) {

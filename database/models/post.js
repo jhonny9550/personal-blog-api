@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-const htmlToText = require('html-to-text');
-const readingTime = require('reading-time');
-const { completedPostSchema } = require('../validators/post');
+import htmlToText from 'html-to-text';
+import readingTime from 'reading-time';
+import { completedPostSchema } from '../validators/post';
 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Post = sequelize.define(
     'Post',
     {
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: true,
       },
     },
-    { underscored: true },
+    { underscored: true }
   );
   Post.addHook('beforeSave', (post) => {
     const { error } = completedPostSchema.validate(post);

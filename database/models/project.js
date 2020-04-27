@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Project = sequelize.define(
     'Project',
     {
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: true,
       },
     },
-    { underscored: true },
+    { underscored: true }
   );
   Project.associate = (models) => {
     Project.belongsToMany(models.Tag, { through: models.TagItem, as: 'tags' });

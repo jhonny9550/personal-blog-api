@@ -1,16 +1,16 @@
-const createError = require('http-errors');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const http = require('http');
-const withGracefulShutdown = require('http-shutdown');
-const { ApolloServer } = require('apollo-server-express');
-const once = require('lodash/once');
-const resolvers = require('./graphql/resolvers');
-const typeDefs = require('./graphql/schemas');
-const config = require('../config');
-const indexRouter = require('./routes/index');
-const models = require('../database/models');
+import createError from 'http-errors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import { createServer } from 'http';
+import withGracefulShutdown from 'http-shutdown';
+import { ApolloServer } from 'apollo-server-express';
+import once from 'lodash/once';
+import resolvers from './graphql/resolvers';
+import typeDefs from './graphql/schemas';
+import config from '../config';
+import indexRouter from './routes/index';
+import models from '../database/models';
 
 const app = express();
 const apolloServer = new ApolloServer({
@@ -31,12 +31,12 @@ app.use('/', indexRouter);
 app.use((req, res, next) => {
   next(createError(404));
 });
-
 const startServer = once(() => {
+  console.log(config);
   const message = config.isDevelopment
     ? `\n\n  [Force] Booting on port ${config.server.port}... \n`
     : `\n\n  [Force] Started on ${config.server.appUrl}. \n`;
-  const server = withGracefulShutdown(http.createServer(app));
+  const server = withGracefulShutdown(createServer(app));
   const stopServer = once(() => {
     server.shutdown(() => {
       console.log('Closed existing connections.');

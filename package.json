@@ -2,15 +2,17 @@
   "name": "personal-blog-api",
   "version": "0.0.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node -r esm index.js",
+    "dev": "nodemon -r esm index.js"
   },
   "dependencies": {
     "apollo-server-express": "^2.11.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "~4.16.1",
     "graphql": "^14.6.0",
     "html-to-text": "^5.1.1",
